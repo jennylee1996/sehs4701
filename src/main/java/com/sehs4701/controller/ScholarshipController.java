@@ -26,4 +26,7 @@ public class ScholarshipController {
                     .body(new ResponseMessage<>(false, e.getMessage()));
         }
     }
+
+    // For admin approve & reject application
+    //TODO: @GetMapping("/getAllScholarshipApplication")
 }

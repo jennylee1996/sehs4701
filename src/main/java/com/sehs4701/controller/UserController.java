@@ -48,6 +48,10 @@ public class UserController {
         }
     }
 
+    //TODO: @PostMapping("/login")
+
+    //TODO: @PostMapping("/logout")
+
     @PostMapping("/getUserById")
     public ResponseEntity<ResponseMessage<User>> getUserById(@RequestParam Long userId) {
 
