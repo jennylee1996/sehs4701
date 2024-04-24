@@ -1,6 +1,6 @@
 package com.sehs4701.repositiory;
 
-import com.sehs4701.model.ScholarshipQuotas;
+import com.sehs4701.entity.ScholarshipQuotas;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

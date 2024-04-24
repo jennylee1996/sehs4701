@@ -1,6 +1,6 @@
 package com.sehs4701.service.Impl;
 
-import com.sehs4701.model.ScholarshipApplication;
+import com.sehs4701.entity.ScholarshipApplication;
 import com.sehs4701.service.ScholarshipApplicationService;
 import org.springframework.stereotype.Service;
 

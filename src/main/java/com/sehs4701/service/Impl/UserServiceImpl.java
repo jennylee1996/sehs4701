@@ -1,6 +1,6 @@
 package com.sehs4701.service.Impl;
 
-import com.sehs4701.model.User;
+import com.sehs4701.entity.User;
 import com.sehs4701.repositiory.UserRepository;
 import com.sehs4701.service.UserService;
 import lombok.AllArgsConstructor;

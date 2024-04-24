@@ -1,6 +1,6 @@
 package com.sehs4701.service;
 
-import com.sehs4701.model.ScholarshipApplication;
+import com.sehs4701.entity.ScholarshipApplication;
 
 import java.util.List;
 

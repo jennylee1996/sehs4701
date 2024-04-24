@@ -1,4 +1,4 @@
-package com.sehs4701.model;
+package com.sehs4701.entity;
 
 import jakarta.persistence.*;
 import lombok.Data;

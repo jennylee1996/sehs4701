@@ -1,9 +1,7 @@
 package com.sehs4701.service.Impl;
 
-import com.sehs4701.model.Scholarship;
-import com.sehs4701.model.User;
+import com.sehs4701.entity.Scholarship;
 import com.sehs4701.repositiory.ScholarshipRepository;
-import com.sehs4701.repositiory.UserRepository;
 import com.sehs4701.service.ScholarshipService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;

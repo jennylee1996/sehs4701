@@ -1,10 +1,9 @@
 package com.sehs4701.controller;
 
 import com.sehs4701.dto.UserDto;
-import com.sehs4701.model.ResponseMessage;
-import com.sehs4701.model.User;
+import com.sehs4701.entity.ResponseMessage;
+import com.sehs4701.entity.User;
 import com.sehs4701.repositiory.UserRepository;
-import com.sehs4701.service.ScholarshipApplicationService;
 import com.sehs4701.service.UserService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;

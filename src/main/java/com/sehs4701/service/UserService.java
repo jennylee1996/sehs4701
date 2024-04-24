@@ -1,6 +1,6 @@
 package com.sehs4701.service;
 
-import com.sehs4701.model.User;
+import com.sehs4701.entity.User;
 
 
 public interface UserService {

@@ -1,8 +1,7 @@
-package com.sehs4701.model;
+package com.sehs4701.entity;
 
 
 import io.micrometer.common.lang.Nullable;
-import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 
