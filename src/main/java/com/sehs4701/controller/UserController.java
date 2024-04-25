@@ -1,10 +1,12 @@
 package com.sehs4701.controller;
 
-import com.sehs4701.dto.UserDto;
+import com.sehs4701.dto.LoginDto;
+import com.sehs4701.dto.RegisterDto;
 import com.sehs4701.entity.ResponseMessage;
 import com.sehs4701.entity.User;
 import com.sehs4701.repositiory.UserRepository;
 import com.sehs4701.service.UserService;
+import com.sehs4701.vo.UserVo;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -22,20 +24,20 @@ public class UserController {
     private final BCryptPasswordEncoder passwordEncoder;
 
     @PostMapping("/register")
-    public ResponseEntity<ResponseMessage<String>> register(@RequestBody UserDto userDto) {
+    public ResponseEntity<ResponseMessage<String>> register(@RequestBody RegisterDto registerDto) {
         try {
             // Check if the email is already registered
-            if (userRepository.existsByEmail(userDto.getEmail())) {
+            if (userRepository.existsByEmail(registerDto.getEmail())) {
                 return ResponseEntity.badRequest().body(new ResponseMessage<>(false, "Email already registered"));
             }
 
             // Create a new User entity
             User user = new User();
-            user.setFirstName(userDto.getFirstName());
-            user.setLastName(userDto.getLastName());
-            user.setEmail(userDto.getEmail());
+            user.setFirstName(registerDto.getFirstName());
+            user.setLastName(registerDto.getLastName());
+            user.setEmail(registerDto.getEmail());
             user.setRole("Student"); // Assuming the default role is Student
-            user.setPassword(passwordEncoder.encode(userDto.getPassword()));
+            user.setPassword(passwordEncoder.encode(registerDto.getPassword()));
 
             // Save the user to the database
             userRepository.save(user);
@@ -47,7 +49,36 @@ public class UserController {
         }
     }
 
-    //TODO: @PostMapping("/login")
+    @PostMapping("/login")
+    public ResponseEntity<ResponseMessage<UserVo>> login(@RequestBody LoginDto loginDto) {
+        try {
+            // Find the user by email
+            User user = userRepository.findByEmail(loginDto.getEmail());
+
+            if (user == null) {
+                return ResponseEntity.badRequest().body(new ResponseMessage<>(false, "Invalid credentials"));
+            }
+
+            // Check the password
+            if (!passwordEncoder.matches(loginDto.getPassword(), user.getPassword())) {
+                return ResponseEntity.badRequest().body(new ResponseMessage<>(false, "Invalid credentials"));
+            }
+
+            // Generate a token for the authenticated user
+            //String token = userService.generateToken(user);
+            UserVo userVo = new UserVo();
+            userVo.setId(user.getId());
+            userVo.setFirstName(user.getFirstName());
+            userVo.setLastName(user.getLastName());
+            userVo.setEmail(user.getEmail());
+            userVo.setRole(user.getRole());
+
+            return ResponseEntity.ok(new ResponseMessage<>(true, "Login successful", userVo));
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                    .body(new ResponseMessage<>(false, "Failed to login"));
+        }
+    }
 
     //TODO: @PostMapping("/logout")
 

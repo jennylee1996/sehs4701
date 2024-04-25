@@ -1,12 +1,12 @@
-package com.sehs4701.dto;
+package com.sehs4701.vo;
 
 import lombok.Data;
 
 @Data
-public class UserDto {
+public class UserVo {
+    private Integer id;
     private String firstName;
     private String lastName;
     private String email;
-    private String password;
-
+    private String role;
 }
