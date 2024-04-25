@@ -1,9 +1,11 @@
 package com.sehs4701.repositiory;
 
-import com.sehs4701.entity.ScholarshipApplication;
+import com.sehs4701.entity.Application;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 @Repository
-public interface ScholarshipApplicationRepository extends JpaRepository<ScholarshipApplication, Long> {
+public interface ApplicationRepository extends JpaRepository<Application, Integer> {
 }

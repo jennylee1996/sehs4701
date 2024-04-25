@@ -1,22 +1,26 @@
 package com.sehs4701.service.Impl;
 
-import com.sehs4701.entity.ScholarshipApplication;
-import com.sehs4701.service.ScholarshipApplicationService;
+import com.sehs4701.entity.Application;
+import com.sehs4701.repositiory.ApplicationRepository;
+import com.sehs4701.service.ApplicationService;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
-public class ScholarshipApplicationServiceImpl implements ScholarshipApplicationService {
+@AllArgsConstructor
+public class ApplicationServiceImpl implements ApplicationService {
+
+    private ApplicationRepository applicationRepository;
+
     @Override
-    public List<ScholarshipApplication> getAllApplicationByUserId(Long userId) {
-        //  TODO: 1. validation, only School Scholarship Committee can view all application form
-        //   2. get all data from db and return data
-        return null;
+    public List<Application> getAllApplicationByUserId() {
+        return applicationRepository.findAll();
     }
 
     @Override
-    public ScholarshipApplication getApplicationByUserId(String userId) {
+    public Application getApplicationByUserId(String userId) {
         // TODO 1. validation, only student can view his/her own application in this year
         //  2. search data and return
         return null;

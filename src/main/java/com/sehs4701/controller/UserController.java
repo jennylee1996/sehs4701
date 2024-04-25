@@ -83,7 +83,7 @@ public class UserController {
     //TODO: @PostMapping("/logout")
 
     @PostMapping("/getUserById")
-    public ResponseEntity<ResponseMessage<User>> getUserById(@RequestParam Long userId) {
+    public ResponseEntity<ResponseMessage<User>> getUserById(@RequestParam Integer userId) {
 
         User user = userService.getUserById(userId);
         if (user == null) {
