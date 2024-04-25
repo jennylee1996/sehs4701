@@ -15,7 +15,6 @@ public class ScholarshipServiceImpl implements ScholarshipService {
     private ScholarshipRepository scholarshipRepository;
     @Override
     public List<Scholarship> getAllScholarship() {
-        List<Scholarship> scholarshipList = scholarshipRepository.findAll();
-        return scholarshipList;
+        return scholarshipRepository.findAll();
     }
 }

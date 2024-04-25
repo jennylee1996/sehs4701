@@ -1,6 +1,7 @@
 package com.sehs4701.entity;
 
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import io.micrometer.common.lang.Nullable;
 import lombok.Builder;
 import lombok.Data;
@@ -12,6 +13,7 @@ public class ResponseMessage<T> {
     private boolean success;
     private String message;
     @Nullable
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     private T data;
 
     public ResponseMessage(boolean success, String message, @Nullable T data) {
