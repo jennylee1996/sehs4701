@@ -17,4 +17,6 @@ public interface ApplicationRepository extends JpaRepository<Application, Intege
             @Param("scholarship") Scholarship scholarship,
             @Param("status") String status,
             @Param("excludedId") Integer excludedId);
+
+    List<Application> findByScholarshipId(Integer scholarshipId);
 }

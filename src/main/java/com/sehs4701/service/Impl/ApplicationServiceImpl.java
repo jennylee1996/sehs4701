@@ -50,13 +50,6 @@ public class ApplicationServiceImpl implements ApplicationService {
     }
 
     @Override
-    public Application getApplicationByUserId(String userId) {
-        // TODO 1. validation, only student can view his/her own application in this year
-        //  2. search data and return
-        return null;
-    }
-
-    @Override
     public ResponseMessage<Application> createApplication(ApplicationDto applicationDto) {
         if (applicationDto == null) {
             throw new IllegalArgumentException("Mandatory field should not be null");

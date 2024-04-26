@@ -11,6 +11,5 @@ public interface ApplicationService {
 
     List<Application> getAllApplicationByUserId();
     ResponseMessage<Application> updateApplication(Application applicationUpdate);
-    Application getApplicationByUserId(String userId);
     ResponseMessage<Application> createApplication(ApplicationDto applicationDto);
 }

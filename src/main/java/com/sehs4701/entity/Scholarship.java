@@ -32,4 +32,7 @@ public class Scholarship {
 
     @Column(name = "used_quota", precision = 10, scale = 2)
     private BigDecimal usedQuota;
+
+    @Column(name = "status")
+    private boolean status = true;
 }

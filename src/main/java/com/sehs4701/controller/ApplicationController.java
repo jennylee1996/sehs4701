@@ -28,7 +28,7 @@ public class ApplicationController {
     public ResponseEntity<?> getAllApplicationByUserId(@PathVariable Integer userId) {
         try {
             User user = userService.getUserById(userId);
-            ResponseEntity<?> checkUserPermission = authorizationService.checkUserPermission(user, "Committee");
+            ResponseEntity<?> checkUserPermission = authorizationService.checkUserPermission(user, "Student");
             return Objects.requireNonNullElseGet(checkUserPermission, () -> ResponseEntity
                     .ok(new ResponseMessage<>(true, "Get Applications Successfully", applicationService.getAllApplicationByUserId())));
         } catch (Exception e) {
@@ -57,7 +57,7 @@ public class ApplicationController {
             return ResponseEntity.ok(response);
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST)
-                    .body(new ResponseMessage<>(false, "Error updating application: " + e.getMessage()));
+                    .body(new ResponseMessage<>(false, "Error creating application: " + e.getMessage()));
         }
     }
 
