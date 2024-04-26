@@ -1,5 +1,6 @@
 package com.sehs4701.controller;
 
+import com.sehs4701.dto.ApplicationDto;
 import com.sehs4701.entity.Application;
 import com.sehs4701.entity.ResponseMessage;
 import com.sehs4701.entity.User;
@@ -22,18 +23,6 @@ public class ApplicationController {
     private AuthorizationService authorizationService;
     private UserService userService;
     private ApplicationService applicationService;
-    // Approve & Reject
-    //TODO: @PostMapping("/updateApplication")
-    @PostMapping("/updateApplication")
-    public ResponseEntity<?> updateApplication(@RequestBody Application applicationUpdate) {
-        try {
-            ResponseMessage<Application> response = applicationService.updateApplication(applicationUpdate);
-            return ResponseEntity.ok(response);
-        } catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST)
-                    .body(new ResponseMessage<>(false, "Error updating application: " + e.getMessage()));
-        }
-    }
 
     @GetMapping("/getAllApplicationByUserId/{userId}")
     public ResponseEntity<?> getAllApplicationByUserId(@PathVariable Integer userId) {
@@ -47,4 +36,29 @@ public class ApplicationController {
                     .body(new ResponseMessage<>(false, "Error updating application: " + e.getMessage()));
         }
     }
+
+    // Approve & Reject
+    //TODO: @PostMapping("/updateApplication")
+    @PostMapping("/updateApplication")
+    public ResponseEntity<?> updateApplication(@RequestBody Application applicationUpdate) {
+        try {
+            ResponseMessage<Application> response = applicationService.updateApplication(applicationUpdate);
+            return ResponseEntity.ok(response);
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST)
+                    .body(new ResponseMessage<>(false, "Error updating application: " + e.getMessage()));
+        }
+    }
+
+    @PostMapping("/createApplication")
+    public ResponseEntity<?> createApplication(@RequestBody ApplicationDto applicationDto) {
+        try {
+            ResponseMessage<Application> response = applicationService.createApplication(applicationDto);
+            return ResponseEntity.ok(response);
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST)
+                    .body(new ResponseMessage<>(false, "Error updating application: " + e.getMessage()));
+        }
+    }
+
 }
