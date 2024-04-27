@@ -1,11 +1,9 @@
 package com.sehs4701.service.Impl;
 
-import com.sehs4701.dto.ApplicationDto;
 import com.sehs4701.dto.ScholarshipDto;
 import com.sehs4701.entity.Application;
 import com.sehs4701.entity.ResponseMessage;
 import com.sehs4701.entity.Scholarship;
-import com.sehs4701.entity.User;
 import com.sehs4701.repositiory.ApplicationRepository;
 import com.sehs4701.repositiory.ScholarshipRepository;
 import com.sehs4701.service.ScholarshipService;
@@ -13,7 +11,6 @@ import jakarta.persistence.EntityNotFoundException;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.math.BigDecimal;
 import java.util.List;
 
 @Service
@@ -36,6 +33,11 @@ public class ScholarshipServiceImpl implements ScholarshipService {
     }
 
     @Override
+    public Scholarship getScholarshipById(Integer scholarshipId) {
+        return scholarshipRepository.findById(scholarshipId).orElseThrow(() -> new EntityNotFoundException("Scholarship not found with ID: " + scholarshipId));
+    }
+
+    @Override
     public ResponseMessage<Scholarship> updateScholarship(ScholarshipDto scholarshipDto) {
         if (scholarshipDto == null || scholarshipDto.getScholarshipName() == null) {
             throw new IllegalArgumentException("Mandatory field should not be null");
@@ -51,7 +53,6 @@ public class ScholarshipServiceImpl implements ScholarshipService {
         scholarshipUpdate.setEndDate(existingScholarship.getEndDate());
         scholarshipUpdate.setAnnounceDate(existingScholarship.getAnnounceDate());
         scholarshipUpdate.setQuota(scholarshipDto.getQuota());
-        scholarshipUpdate.setUsedQuota(BigDecimal.valueOf(0));
 
         return new ResponseMessage<>(true, "Application updated successfully", scholarshipRepository.save(scholarshipUpdate));
     }

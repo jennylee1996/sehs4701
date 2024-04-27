@@ -18,5 +18,12 @@ public interface ApplicationRepository extends JpaRepository<Application, Intege
             @Param("status") String status,
             @Param("excludedId") Integer excludedId);
 
+    @Query("SELECT COUNT(a) FROM Application a WHERE a.scholarship.id = :scholarshipId AND a.user.id = :userId AND a.status = 'approved'")
+    int countUserApprovedApplication(
+            @Param("scholarshipId") Integer scholarshipId,
+            @Param("userId") Integer userId);
+
+    List<Application> findByUserId(Integer userId);
+
     List<Application> findByScholarshipId(Integer scholarshipId);
 }

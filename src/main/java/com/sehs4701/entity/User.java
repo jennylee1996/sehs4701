@@ -21,6 +21,9 @@ public class User {
     @Column(nullable = false)
     private String email;
 
+    @Column(length = 50)
+    private String major;
+
     @Column(nullable = false)
     private String role;
 

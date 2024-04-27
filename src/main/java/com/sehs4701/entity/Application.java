@@ -1,5 +1,6 @@
 package com.sehs4701.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -23,6 +24,7 @@ public class Application {
     @JoinColumn(name = "user_id")
     private User user;
 
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern="yyyy-MM-dd")
     @Column(name = "submit_date")
     private Date submitDate;
 

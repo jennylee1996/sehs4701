@@ -7,6 +7,7 @@ public class RegisterDto {
     private String firstName;
     private String lastName;
     private String email;
+    private String major;
     private String password;
 
 }

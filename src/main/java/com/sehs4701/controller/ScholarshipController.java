@@ -31,6 +31,17 @@ public class ScholarshipController {
         }
     }
 
+    @GetMapping("/getScholarshipById/{id}")
+    public ResponseEntity<ResponseMessage<Scholarship>> getScholarshipById(@PathVariable Integer id) {
+        try {
+            Scholarship scholarship = scholarshipService.getScholarshipById(id);
+            return ResponseEntity.ok(new ResponseMessage<>(true, "Get scholarship successfully", scholarship));
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                    .body(new ResponseMessage<>(false, e.getMessage()));
+        }
+    }
+
     @PostMapping("/createScholarship")
     public ResponseEntity<?> createScholarship(@RequestBody Scholarship scholarshipCreate) {
         try {

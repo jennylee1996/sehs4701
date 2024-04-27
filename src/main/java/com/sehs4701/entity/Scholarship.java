@@ -1,5 +1,6 @@
 package com.sehs4701.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -18,20 +19,26 @@ public class Scholarship {
     @Column(name = "scholarship_name", nullable = false, length = 50)
     private String scholarshipName;
 
+    @Column(name = "amount")
+    private Integer amount;
+
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern="yyyy-MM-dd")
     @Column(name = "start_date")
     private Date startDate;
 
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern="yyyy-MM-dd")
     @Column(name = "end_date")
     private Date endDate;
 
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern="yyyy-MM-dd")
     @Column(name = "announce_date")
     private Date announceDate;
 
-    @Column(nullable = false, precision = 10, scale = 2)
-    private BigDecimal quota;
+    @Column(nullable = false)
+    private Integer quota;
 
-    @Column(name = "used_quota", precision = 10, scale = 2)
-    private BigDecimal usedQuota;
+    @Column(name = "used_quota")
+    private Integer usedQuota;
 
     @Column(name = "status")
     private boolean status = true;

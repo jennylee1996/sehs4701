@@ -36,6 +36,7 @@ public class UserController {
             user.setFirstName(registerDto.getFirstName());
             user.setLastName(registerDto.getLastName());
             user.setEmail(registerDto.getEmail());
+            user.setMajor(registerDto.getMajor());
             user.setRole("Student"); // Assuming the default role is Student
             user.setPassword(passwordEncoder.encode(registerDto.getPassword()));
 
@@ -71,6 +72,7 @@ public class UserController {
             userVo.setFirstName(user.getFirstName());
             userVo.setLastName(user.getLastName());
             userVo.setEmail(user.getEmail());
+            userVo.setMajor(user.getMajor());
             userVo.setRole(user.getRole());
 
             return ResponseEntity.ok(new ResponseMessage<>(true, "Login successful", userVo));
@@ -79,8 +81,6 @@ public class UserController {
                     .body(new ResponseMessage<>(false, "Failed to login"));
         }
     }
-
-    //TODO: @PostMapping("/logout")
 
     @PostMapping("/getUserById")
     public ResponseEntity<ResponseMessage<User>> getUserById(@RequestParam Integer userId) {
