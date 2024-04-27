@@ -53,6 +53,7 @@ public class ScholarshipServiceImpl implements ScholarshipService {
         scholarshipUpdate.setEndDate(existingScholarship.getEndDate());
         scholarshipUpdate.setAnnounceDate(existingScholarship.getAnnounceDate());
         scholarshipUpdate.setQuota(scholarshipDto.getQuota());
+        scholarshipUpdate.setAmount(scholarshipDto.getAmount());
 
         return new ResponseMessage<>(true, "Application updated successfully", scholarshipRepository.save(scholarshipUpdate));
     }

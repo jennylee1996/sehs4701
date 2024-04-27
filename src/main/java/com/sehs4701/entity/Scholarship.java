@@ -35,10 +35,10 @@ public class Scholarship {
     private Date announceDate;
 
     @Column(nullable = false)
-    private Integer quota;
+    private int quota;
 
-    @Column(name = "used_quota")
-    private Integer usedQuota;
+    @Column(name = "used_quota", insertable = false)
+    private int usedQuota;
 
     @Column(name = "status")
     private boolean status = true;
